@@ -28,9 +28,8 @@ app.post("/", function(req, res) {
       //console.log("reponse.on begun");
       const rankData = JSON.parse(data);
       var playerFound = 0;
-      console.log(rankData.rankings[0].competitor_rankings.length);
       for(var i = 0; i < rankData.rankings[0].competitor_rankings.length; i++){
-        console.log(rankData.rankings[0].competitor_rankings[i].competitor.name);
+
         if(rankData.rankings[0].competitor_rankings[i].competitor.name === playerName) {
 
           res.write("<p>Player Name: " + playerName + "</p>");
