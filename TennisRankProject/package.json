@@ -1,0 +1,14 @@
+{
+  "name": "tennisrankproject",
+  "version": "1.0.0",
+  "description": "A site to lookup rank information on pro tennis players",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Gallagher",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
