@@ -33,15 +33,30 @@ app.post("/", function(req, res){
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us14.api.mailchimp.com/3.0/";
+  const url = "https://us14.api.mailchimp.com/3.0/lists/2b3e33e06a";
 
-  https.request(url, options, function(response) {
+  const options = {
+    method: "POST",
+    auth: "sam1:22d261e1527d69820dd4f964585a8521-us14"
+  }
 
+  const request = https.request(url, options, function(response) {
+    if(response.statusCode === 200) {
+      res.sendFile(__dirname + "/success.html");
+    } else {
+      res.send("Failure!");
+    }
+    response.on("data", function(data){
+      console.log(JSON.parse(data));
+    })
   })
+
+  request.write(jsonData);
+  request.end();
 })
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Server is running on port 3000.");
 })
 
@@ -53,7 +68,7 @@ app.listen(3000, function(){
 
 
 //MailChimp API Key
-//e86759be8a7644f3bfc5b0d6014b7313-us14
+//22d261e1527d69820dd4f964585a8521-us14
 
 //List idea
 //2b3e33e06a
